@@ -1,0 +1,8 @@
+{
+  "name": "Ziyo Maket",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "c6a6d26a"
+}

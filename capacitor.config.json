@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Ziyo Maket",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
