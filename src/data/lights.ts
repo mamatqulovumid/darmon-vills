@@ -1,11 +1,11 @@
-import {Flat} from "@/data/sections";
+import {House} from "@/data/sections";
 import {syncLights} from "@/api/lights";
 
 export const LIGHTS_KEY = 'lights'
 
 export type Lights = Record<number, number[]>
 
-export const turnOnLight = async (flat: Flat): Promise<void> => {
+export const turnOnLight = async (flat: House): Promise<void> => {
   const lights: Lights = getLights()
   if (!(flat.row in lights)) {
     lights[flat.row] = []
@@ -16,19 +16,19 @@ export const turnOnLight = async (flat: Flat): Promise<void> => {
   await updateLights(lights)
 }
 
-export const turnOffLight = async (flat: Flat): Promise<void> => {
+export const turnOffLight = async (house: House): Promise<void> => {
   const lights: Lights = getLights()
-  const row: number[] = lights[flat.row]
-  if (row && row.includes(flat.col)) {
-    lights[flat.row] = row.filter(col => col !== flat.col)
+  const row: number[] = lights[house.row]
+  if (row && row.includes(house.col)) {
+    lights[house.row] = row.filter(col => col !== house.col)
   }
   await updateLights(lights)
 }
 
-export const getFlatState = (flat: Flat): boolean => {
+export const getHouseState = (house: House): boolean => {
   const lights: Lights = getLights()
 
-  return lights[flat.row] && lights[flat.row].includes(flat.col)
+  return lights[house.row] && lights[house.row].includes(house.col)
 }
 
 export const updateLights = async (lights: Lights): Promise<void> => {

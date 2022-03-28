@@ -7,18 +7,18 @@
   >
     <ion-header translucent>
       <ion-toolbar>
-        <ion-title>Квартира: {{ flat.id }}</ion-title>
+        <ion-title>Квартира: {{ house.id }}</ion-title>
         <ion-buttons slot="end">
           <ion-button @click="closeModal">Закрыть</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <article class="flat-info">
+    <article class="house-info">
       <div
-          class="flat-info__image"
+          class="house-info__image"
           :style="{backgroundImage: `url(${imageUrl})`}"
       ></div>
-      <h3>Information about flat {{ flat.id }}</h3>
+      <h3>Information about house {{ house.id }}</h3>
       <p>
         {{ content }}
       </p>
@@ -36,12 +36,12 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue'
-import {Flat} from "@/data/sections";
+import {House} from "@/data/sections";
 import {IonModal, IonButton, toastController} from "@ionic/vue";
-import {getFlatState, turnOffLight, turnOnLight} from "@/data/lights";
+import {getHouseState, turnOffLight, turnOnLight} from "@/data/lights";
 
 export default defineComponent({
-  name: 'FlatModal',
+  name: 'HouseModal',
   components: {
     IonModal,
     IonButton
@@ -50,8 +50,8 @@ export default defineComponent({
     value: {
       type: Boolean
     },
-    flat: {
-      type: Object as PropType<Flat>,
+    house: {
+      type: Object as PropType<House>,
       required: true
     }
   },
@@ -80,7 +80,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.lightStatus = getFlatState(this.flat)
+    this.lightStatus = getHouseState(this.house)
   },
   methods: {
     closeModal() {
@@ -90,9 +90,9 @@ export default defineComponent({
       this.lightStatus = !this.lightStatus
       try {
         if (this.lightStatus) {
-          await turnOnLight(this.flat)
+          await turnOnLight(this.house)
         } else {
-          await turnOffLight(this.flat)
+          await turnOffLight(this.house)
         }
       } catch (e) {
         if(e instanceof Error) {
@@ -123,11 +123,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.flat-info {
+.house-info {
   padding: 25px 20px;
 }
 
-.flat-info__image {
+.house-info__image {
   height: 250px;
 
   background-size: cover;

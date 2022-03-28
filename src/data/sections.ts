@@ -28,11 +28,6 @@ export interface Section {
 export interface House {
   id: number
   section_id: number
-}
-
-export interface Flat {
-  id: number
-  house_id: number
   col: number
   row: number
 }
@@ -83,37 +78,14 @@ const sections: Section[] = [
 const houses: House[] = [
   {
     id: 1,
-    section_id: 1
-  },
-  {
-    id: 2,
-    section_id: 1
-  }
-]
-
-const flats: Flat[] = [
-  {
-    id: 1,
-    house_id: 1,
+    section_id: 1,
     row: ROW.FIRST,
     col: COL.FIRST
   },
   {
     id: 2,
-    house_id: 1,
+    section_id: 1,
     row: ROW.FIRST,
-    col: COL.SECOND
-  },
-  {
-    id: 3,
-    house_id: 2,
-    row: ROW.SECOND,
-    col: COL.FIRST
-  },
-  {
-    id: 4,
-    house_id: 2,
-    row: ROW.SECOND,
     col: COL.SECOND
   }
 ]
@@ -130,12 +102,4 @@ export const getSectionHouses = (id: number): House[] => {
 
 export const getHouse = (id: number): House | undefined => {
   return houses.find((house => house.id === id))
-}
-
-export const getHouseFlats = (id: number): Flat[] => {
-  return flats.filter(({house_id}: Flat) => house_id === id)
-}
-
-export const getFlat = (id: number): Flat | undefined => {
-  return flats.find((flat => flat.id === id))
 }

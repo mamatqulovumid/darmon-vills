@@ -19,11 +19,6 @@ const routes: Array<RouteRecordRaw> = [
     strict: true
   },
   {
-    path: '/section/:section/:house',
-    component: () => import('../views/HousePage.vue'),
-    strict: true
-  },
-  {
     path: '/settings',
     component: () => import('../views/SettingsPage.vue'),
     strict: true

@@ -1,29 +1,43 @@
 <template>
   <card-list-item
-      :link="houseLink"
+      @click="openModal"
   >
-    Дом: &#8470;{{ house.id }}
+    <span>Квартира: &#8470;{{ house.id }}</span>
+    <house-modal
+        :value="showModal"
+        :house="house"
+        @update:value="showModal = $event"
+    />
   </card-list-item>
 </template>
 
 <script lang="ts">
 import {defineComponent, PropType} from 'vue';
 import {House} from "@/data/sections";
+import HouseModal from "@/components/house/HouseModal.vue";
 import CardListItem from "@/components/list/CardListItem.vue";
 
 export default defineComponent({
   name: 'HouseListItem',
-  components: {CardListItem},
+  components: {
+    CardListItem,
+    HouseModal
+  },
   props: {
     house: {
       type: Object as PropType<House>,
       required: true
     }
   },
-  computed: {
-    houseLink(): string {
-      return `/section/${this.house.section_id}/${this.house.id}`
+  data() {
+    return {
+      showModal: false
+    }
+  },
+  methods: {
+    openModal() {
+      this.showModal = true
     }
   }
-})
+});
 </script>
