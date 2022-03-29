@@ -1,7 +1,7 @@
 export const IP_ADDRESS_KEY = 'ipAddress'
 
 export const getIpAddress = (): string => {
-  return localStorage.getItem(IP_ADDRESS_KEY) ?? '192.168.0.106'
+  return localStorage.getItem(IP_ADDRESS_KEY) ?? '192.168.0.111'
 }
 
 export const setIpAddress = (address: string): void => {

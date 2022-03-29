@@ -24,22 +24,25 @@
         </router-link>
       </ion-toolbar>
     </ion-header>
-    <main>
-      <div class="overlay">
-        <slot/>
-      </div>
-    </main>
+    <ion-content>
+      <main>
+        <div class="overlay">
+          <slot />
+        </div>
+      </main>
+    </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 import {
   IonHeader,
   IonBackButton,
   IonTitle,
   IonToolbar,
-  IonPage
+  IonPage,
+  IonContent
 } from "@ionic/vue";
 
 export default defineComponent({
@@ -49,7 +52,8 @@ export default defineComponent({
     IonHeader,
     IonBackButton,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonContent
   },
   props: {
     pageTitle: {
@@ -68,7 +72,7 @@ export default defineComponent({
     }
   },
   computed: {
-    backButtonText(): string {
+    backButtonText (): string {
       const win = window as any;
       const mode = win && win.Ionic && win.Ionic.mode;
       return mode === 'ios' ? 'Back' : '';
@@ -78,13 +82,15 @@ export default defineComponent({
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Lato:wght@100;300;400;700;900&family=Roboto+Slab:wght@100;300;400;500;600;700&family=Yeseva+One&display=swap');
+
 ion-title {
   color: #000000;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
 }
+
 main {
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 
@@ -93,11 +99,13 @@ main {
   background-size: cover;
   /*backdrop-filter: brightness(45%);*/
 }
-ion-button{
- padding: 0px 20px;
+
+ion-button {
+  padding: 0px 20px;
 }
+
 .overlay {
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 80%);
 }
 

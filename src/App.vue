@@ -29,7 +29,7 @@ export default defineComponent({
     setInitialLights() {
       const lights: Lights = getLights()
       Object.keys(ROW).forEach(row => {
-        if (!(row in lights)) {
+        if (!isNaN(parseInt(row)) && !(row in lights)) {
           lights[parseInt(row)] = []
         }
       })
