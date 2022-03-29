@@ -1,7 +1,7 @@
 <template>
   <card-list-item
       :link="sectionLink">
-      Секция: &#8470;{{ section.name }}
+      {{ section.name }}
   </card-list-item>
 </template>
 <script lang="ts">

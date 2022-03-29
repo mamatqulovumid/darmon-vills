@@ -18,11 +18,11 @@ export default defineComponent({
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  padding: 50px 0px;
+  padding: 10px 0px;
 }
 
 .card-list li {
   min-width: 150px;
-  margin: 5px 20px;
+  margin: 30px 20px;
 }
 </style>

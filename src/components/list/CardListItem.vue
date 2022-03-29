@@ -28,12 +28,16 @@ export default defineComponent({
 
 <style scoped>
 li {
-  padding: 20px;
+  padding: 60px;
   position: relative;
 
   text-align: center;
 
-  background: #ffffff;
+  color: #FFD700;
+  font-size: 20px;
+  background-image: url("~/src/assets/img/home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 8px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(5, 5, 5, 0.1);
 
@@ -42,7 +46,7 @@ li {
 }
 
 li:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
 }
 
 a {

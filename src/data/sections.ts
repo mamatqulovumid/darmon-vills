@@ -63,15 +63,22 @@ const sections: Section[] = [
   },
   {
     id: 8,
-    name: 'G'
+    name: 'H'
   },
   {
     id: 9,
-    name: 'G'
+    name: 'I'
   },
   {
     id: 10,
-    name: 'Others'
+    name: 'J'
+  },
+  {
+    id: 11,
+    name: 'K'
+  },  {
+    id: 12,
+    name: '&'
   },
 ];
 
@@ -84,6 +91,18 @@ const houses: House[] = [
   },
   {
     id: 2,
+    section_id: 1,
+    row: ROW.FIRST,
+    col: COL.SECOND
+  },
+  {
+    id: 3,
+    section_id: 1,
+    row: ROW.FIRST,
+    col: COL.SECOND
+  },
+  {
+    id: 4,
     section_id: 1,
     row: ROW.FIRST,
     col: COL.SECOND

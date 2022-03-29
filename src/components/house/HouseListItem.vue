@@ -2,7 +2,7 @@
   <card-list-item
       @click="openModal"
   >
-    <span>Квартира: &#8470;{{ house.id }}</span>
+    <span> {{ house.id }}</span>
     <house-modal
         :value="showModal"
         :house="house"

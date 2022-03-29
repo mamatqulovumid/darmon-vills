@@ -1,7 +1,7 @@
 
 <template>
   <page-layout
-      page-title="DURMON VILLALARI"
+      page-title="#durmon-villa"
       :has-button="false"
   >
     <card-list>

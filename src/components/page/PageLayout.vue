@@ -26,7 +26,6 @@
     </ion-header>
     <main>
       <div class="overlay">
-        <div class="logo"></div>
         <slot/>
       </div>
     </main>
@@ -78,32 +77,28 @@ export default defineComponent({
 })
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Lato:wght@100;300;400;700;900&family=Roboto+Slab:wght@100;300;400;500;600;700&family=Yeseva+One&display=swap');
+ion-title {
+  color: #000000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
 main {
   height: 100vh;
   margin: 0;
   padding: 0;
 
-  background-image: url("~/src/assets/img/durmonvill.png");
+  background-image: url("~/src/assets/img/bg-durmon.png");
   background-repeat: no-repeat;
   background-size: cover;
-  backdrop-filter: brightness(45%);
+  /*backdrop-filter: brightness(45%);*/
 }
-
+ion-button{
+ padding: 0px 20px;
+}
 .overlay {
   height: 100%;
-  background-color: rgba(0, 0, 0, 40%);
+  background-color: rgba(0, 0, 0, 80%);
 }
 
-/*.logo {*/
-/*  position: absolute;*/
-/*  left: calc(50% - 100px);*/
-/*  top: calc(50% - 100px);*/
-
-/*  width: 200px;*/
-/*  height: 200px;*/
-
-/*  background-image: url("~/src/assets/img/logo.png");*/
-/*  background-repeat: no-repeat;*/
-/*  background-size: cover;*/
-/*}*/
 </style>
