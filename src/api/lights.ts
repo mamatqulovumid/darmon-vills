@@ -2,6 +2,7 @@ import { Http } from "@capacitor-community/http";
 import { Lights } from "@/data/lights";
 import { getIpAddress } from "@/data/arduino";
 import { COL } from '@/data/sections'
+import { Other } from '@/data/others'
 
 export const syncLights = async (lights: Lights): Promise<void> => {
   const matrixPixels: number[][] = [[], [], []]
@@ -42,5 +43,16 @@ export const syncLights = async (lights: Lights): Promise<void> => {
     data: matrixPixels.map((pixels: number[]) => {
       return pixels.join(',') + ','
     }).join('|')
+  })
+}
+
+export const syncOthers = async (others: Other[]): Promise<void> => {
+  await Http.post({
+    url: `http://${getIpAddress()}:8090/others`,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain'
+    },
+    data: others.map(item => Number(item.value)).join(',') + ','
   })
 }
