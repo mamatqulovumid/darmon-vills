@@ -3,3 +3,31 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+.section-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    height: 80px;
+    width: 80px;
+
+    color: #000000;
+    font-size: 25px;
+    font-weight: 700;
+    background-color: #EAE7AF;
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+}
+
+.section-item a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    text-decoration: none;
+}

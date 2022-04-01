@@ -1,18 +1,17 @@
 <template>
-  <card-list-item
-      :link="sectionLink">
+  <div class="section-item">
+    <router-link :to="sectionLink" />
+    <span>
       {{ section.name }}
-  </card-list-item>
+    </span>
+  </div>
 </template>
 <script lang="ts">
-
-import {defineComponent, PropType} from 'vue';
-import {Section} from "@/data/sections";
-import CardListItem from "@/components/list/CardListItem.vue";
+import { defineComponent, PropType } from 'vue';
+import { Section } from "@/data/sections";
 
 export default defineComponent({
   name: 'SectionListItem',
-  components: {CardListItem},
   props: {
     section: {
       type: Object as PropType<Section>,
@@ -20,7 +19,7 @@ export default defineComponent({
     },
   },
   computed: {
-    sectionLink(): string {
+    sectionLink (): string {
       return `/section/${this.section.id}`
     }
   }

@@ -1,8 +1,14 @@
-.list-md {
-    background: transparent;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 0 100px;
-    margin: 240px 0px;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
+:root {
+    --ion-font-family: 'Nunito';
+
+    --ion-color-primary: #787A91;
+    --ion-color-success: #29C7AC;
+    --ion-color-danger: #ED6663;
+}
+
+ion-button {
+    font-weight: 700;
+    height: 45px;
 }

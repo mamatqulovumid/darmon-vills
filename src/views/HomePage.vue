@@ -1,7 +1,6 @@
 <template>
   <page-layout
-      page-title="#durmon-villa"
-      :has-button="false"
+      page-title="Durmon Villalari"
   >
     <card-list>
       <section-list-item
@@ -9,11 +8,10 @@
           :key="section.id"
           :section="section"
       />
-      <card-list-item
-          link="others"
-      >
-        &
-      </card-list-item>
+      <div class="section-item">
+        <router-link to="others"></router-link>
+        <span>&</span>
+      </div>
     </card-list>
   </page-layout>
 </template>
@@ -24,12 +22,10 @@ import { defineComponent } from 'vue';
 import { getSections } from '@/data/sections';
 import PageLayout from "@/components/page/PageLayout.vue";
 import CardList from "@/components/list/CardList.vue";
-import CardListItem from '@/components/list/CardListItem.vue'
 
 export default defineComponent({
   name: 'HomePage',
   components: {
-    CardListItem,
     PageLayout,
     SectionListItem,
     CardList

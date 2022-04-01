@@ -1,4 +1,5 @@
 build:
+	cordova-res android --skip-config --copy
 	ionic build
 	ionic cap copy
 	ionic cap sync

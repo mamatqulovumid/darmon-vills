@@ -2,8 +2,9 @@
   <card-list-item
       @click="openModal"
   >
-    <span> {{ house.id }}</span>
+    <span> {{ label }} </span>
     <house-modal
+        v-if="showModal"
         :value="showModal"
         :house="house"
         @update:value="showModal = $event"
@@ -12,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue';
-import {House} from "@/data/sections";
+import { defineComponent, PropType } from 'vue';
+import { House, getSectionHouses } from "@/data/sections";
 import HouseModal from "@/components/house/HouseModal.vue";
 import CardListItem from "@/components/list/CardListItem.vue";
 
@@ -29,14 +30,29 @@ export default defineComponent({
       required: true
     }
   },
-  data() {
+  data () {
     return {
       showModal: false
     }
   },
+  computed: {
+    label () {
+      return this.house.id - this.getLastHousesCount()
+    }
+  },
   methods: {
-    openModal() {
+    openModal () {
       this.showModal = true
+    },
+    getLastHousesCount () {
+      let result = 0
+      let iter = this.house.section_id
+
+      while (iter-- > 0) {
+        result += getSectionHouses(iter).length
+      }
+
+      return result
     }
   }
 });

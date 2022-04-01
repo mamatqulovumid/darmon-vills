@@ -10,8 +10,8 @@ import { defineComponent } from 'vue';
 import { getLights, Lights, setLights } from "@/data/lights";
 import { syncLights } from "@/api/lights";
 import { ROW } from "@/data/sections";
-import { getIpAddress, setIpAddress } from "@/data/arduino";
-import { getOthers, Other, updateOthers } from '@/data/others'
+import { fetchIpAddress, getIpAddress, setIpAddress } from "@/data/arduino";
+import { getOthers, updateOthers } from '@/data/others'
 
 export default defineComponent({
   name: 'App',
@@ -19,14 +19,18 @@ export default defineComponent({
     IonApp,
     IonRouterOutlet
   },
-  mounted () {
-    this.setInitialAddress()
+  beforeMount () {
     this.setInitialLights()
     this.setInitialOthers()
   },
+  mounted () {
+    this.setInitialAddress()
+  },
   methods: {
-    setInitialAddress () {
-      setIpAddress(getIpAddress())
+    async setInitialAddress () {
+      setIpAddress(
+          (await fetchIpAddress()).data
+      )
     },
     setInitialLights () {
       const lights: Lights = getLights()

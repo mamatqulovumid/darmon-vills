@@ -7,22 +7,35 @@
   >
     <ion-header translucent>
       <ion-toolbar>
-        <ion-title>№ {{ house.id }} квартира </ion-title>
+        <ion-title>Дом №{{ house.id }}</ion-title>
         <ion-buttons slot="end">
           <ion-button @click="closeModal">Закрыть</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <article class="house-info">
+    <article
+        class="house-info"
+    >
       <div
-          class="house-info__image"
-          :style="{backgroundImage: `url(${imageUrl})`}"
-      ></div>
-      <h3>85 ADET VİLLA PARSELİ (55.800 m²) {{ house.id }}</h3>
-      <p>
-        {{ content }}
-      </p>
-
+        v-if="houseInfo"
+      >
+        <ion-slides :options="slideOpts">
+          <ion-slide
+              v-for="image in houseInfo.images"
+              :key="image"
+          >
+            <div class="house-info__image">
+              <img
+                  :src="image"
+                  :alt="image"
+              >
+            </div>
+          </ion-slide>
+        </ion-slides>
+        <p>
+          {{ houseInfo.description }}
+        </p>
+      </div>
       <ion-button
           :color="btnType"
           strong
@@ -35,16 +48,19 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from 'vue'
-import {House} from "@/data/sections";
-import {IonModal, IonButton, toastController} from "@ionic/vue";
-import {getHouseState, turnOffLight, turnOnLight} from "@/data/lights";
+import { defineComponent, PropType } from 'vue'
+import { House } from "@/data/sections";
+import { IonModal, IonButton, toastController, IonSlides, IonSlide } from "@ionic/vue";
+import { getHouseState, turnOffLight, turnOnLight } from "@/data/lights";
+import { getHouseInfo } from '@/api/houses'
 
 export default defineComponent({
   name: 'HouseModal',
   components: {
     IonModal,
-    IonButton
+    IonButton,
+    IonSlides,
+    IonSlide
   },
   props: {
     value: {
@@ -55,39 +71,37 @@ export default defineComponent({
       required: true
     }
   },
-  data() {
+  data () {
     return {
       lightStatus: false,
+      houseInfo: null,
+      slideOpts: {
+        initialSlide: 1,
+        speed: 400
+      }
     }
   },
   computed: {
-    imageUrl() {
-      return 'https://i.pinimg.com/474x/dd/62/56/dd6256b6cb04d6cfe97f0aa68553aa02.jpg'
-    },
-    content() {
-      return `450-500 m² (1 parsel)`
-
-
-    },
-    btnType() {
+    btnType () {
       return this.lightStatus
           ? 'danger'
           : 'success'
     },
-    btnText() {
+    btnText () {
       return this.lightStatus
           ? 'Отключить'
           : 'Включить'
     }
   },
-  mounted() {
+  mounted () {
     this.lightStatus = getHouseState(this.house)
+    this.setHouseInfo()
   },
   methods: {
-    closeModal() {
+    closeModal () {
       this.$emit('update:value', false)
     },
-    async updateLightStatus() {
+    async updateLightStatus () {
       this.lightStatus = !this.lightStatus
       try {
         if (this.lightStatus) {
@@ -95,29 +109,17 @@ export default defineComponent({
         } else {
           await turnOffLight(this.house)
         }
-      } catch (e) {
-        if (e instanceof Error) {
-          await this.showToast(e)
-        }
-      }
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
     },
-    async showToast(e: Error) {
-      const toast = await toastController
-          .create({
-            // message: 'Ошибка при соединении с платой',
-            message: e.message + e.name,
-            position: 'bottom',
-            buttons: [
-              {
-                text: 'Перейти к настройкам',
-                handler: this.handleSettings
-              }
-            ]
-          })
-      await toast.present();
-    },
-    handleSettings() {
+    handleSettings () {
       location.href = 'settings'
+    },
+    async setHouseInfo () {
+      const { data } = await getHouseInfo(this.house.id)
+      if (data) {
+        this.houseInfo = data
+      }
     }
   }
 })
@@ -127,19 +129,20 @@ export default defineComponent({
 h3 {
   color: #333333;
 }
+
 p {
   color: #737373;
 }
+
 ion-title {
-   font-weight: bold;
+  font-weight: bold;
 }
+
 .house-info {
   padding: 25px 20px;
 }
 
 .house-info__image {
   height: 250px;
-
-  background-size: cover;
 }
 </style>

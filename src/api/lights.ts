@@ -5,16 +5,14 @@ import { COL } from '@/data/sections'
 import { Other } from '@/data/others'
 
 export const syncLights = async (lights: Lights): Promise<void> => {
-  const matrixPixels: number[][] = [[], [], []]
+  const matrixPixels: number[][] = [[], []]
 
   Object.values(lights).forEach((cols: number[]) => {
-    const matrix: number[][] = [[], [], []]
+    const matrix: number[][] = [[], []]
 
     cols.forEach((col: number) => {
       if (col < COL.NINTH) {
-        matrix[2].push(col)
-      } else if (col > COL.SEVENTEENTH) {
-        matrix[0].push(col - 16)
+        matrix[0].push(col)
       } else {
         matrix[1].push(col - 8)
       }
@@ -25,11 +23,6 @@ export const syncLights = async (lights: Lights): Promise<void> => {
     }, 0))
 
     matrixPixels[1].push(matrix[1].reduce((sum: number, result: number) => {
-      return sum + 2 ** result
-    }, 0))
-
-
-    matrixPixels[2].push(matrix[2].reduce((sum: number, result: number) => {
       return sum + 2 ** result
     }, 0))
   })

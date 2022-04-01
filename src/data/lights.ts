@@ -1,5 +1,5 @@
-import {House} from "@/data/sections";
-import {syncLights} from "@/api/lights";
+import { COL, House, ROW } from "@/data/sections";
+import { syncLights } from "@/api/lights";
 
 export const LIGHTS_KEY = 'lights'
 
@@ -42,4 +42,30 @@ export const getLights = (): Lights => {
 
 export const setLights = (lights: Lights): void => {
   localStorage.setItem(LIGHTS_KEY, JSON.stringify(lights))
+}
+
+export const getFilledLights = (): Lights => {
+  const lights: Lights = {}
+
+  Object.keys(ROW).forEach(row => {
+    if (!isNaN(parseInt(row))) {
+      lights[parseInt(row)] = Object.keys(COL)
+        .filter(col => !isNaN(parseInt(col)))
+        .map(col => parseInt(col))
+    }
+  })
+
+  return lights
+}
+
+export const getEmptyLights = (): Lights => {
+  const lights: Lights = {
+    ...getLights()
+  }
+
+  for (const row in lights) {
+    lights[row] = []
+  }
+
+  return lights
 }

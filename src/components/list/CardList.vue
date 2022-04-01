@@ -1,7 +1,7 @@
 <template>
-  <ul class="card-list">
+  <div class="card-list">
     <slot/>
-  </ul>
+  </div>
 </template>
 
 <script lang="ts">
@@ -16,13 +16,17 @@ export default defineComponent({
 .card-list {
   display: flex;
   flex-wrap: wrap;
+
   align-items: center;
+  align-content: center;
   justify-content: center;
-  padding: 10px 0px;
+
+  padding: 10px 0;
+
+  height: 100%;
 }
 
-.card-list li {
-  min-width: 150px;
-  margin: 30px 20px;
+.card-list div {
+  margin: 10px 20px;
 }
 </style>

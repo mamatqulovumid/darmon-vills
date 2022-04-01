@@ -1,15 +1,15 @@
 <template>
-  <li>
-    <slot/>
+  <div>
+    <slot />
     <router-link
         v-if="link"
         :to="link"
     />
-  </li>
+  </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'CardListItem',
@@ -27,26 +27,27 @@ export default defineComponent({
 </script>
 
 <style scoped>
-li {
-  padding: 60px;
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 130px;
+  height: 130px;
+
   position: relative;
 
-  text-align: center;
+  color: #EAE7AF;
+  font-size: 25px;
+  font-weight: 700;
 
-  color: #FFD700;
-  font-size: 20px;
   background-image: url("~/src/assets/img/home.png");
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 8px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(5, 5, 5, 0.1);
 
   cursor: pointer;
   transition-duration: 0.3s;
-}
-
-li:hover {
-  transform: translateY(-7px);
 }
 
 a {

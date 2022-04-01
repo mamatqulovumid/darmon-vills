@@ -6,39 +6,34 @@ export type Other = {
   id: number
   value: boolean
   label: string
+  image: string
 }
 
 export const initialOthers = [
   {
     id: 1,
     value: false,
-    label: 'Светафоры'
+    label: 'Дорога',
+    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
   },
   {
     id: 2,
     value: false,
-    label: 'Бордюры'
+    label: 'Cтолба',
+    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
   },
   {
     id: 3,
     value: false,
-    label: 'Фонтаны'
+    label: 'Машина',
+    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
   },
   {
     id: 4,
     value: false,
-    label: 'Элемент 1'
-  },
-  {
-    id: 5,
-    value: false,
-    label: 'Элемент 2'
-  },
-  {
-    id: 6,
-    value: false,
-    label: 'Элемент 3'
-  },
+    label: 'Плафон',
+    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
+  }
 ]
 
 export const updateOthers = (others: Other[]) => {
@@ -47,10 +42,6 @@ export const updateOthers = (others: Other[]) => {
 }
 
 export const getOthers = (): Other[] => {
-  const others = localStorage.getItem(OTHERS_KEY)
-  if (others) {
-    return JSON.parse(others) as Other[]
-  }
   return initialOthers
 }
 

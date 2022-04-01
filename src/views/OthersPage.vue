@@ -2,31 +2,29 @@
   <page-layout
       :page-title="pageTitle"
   >
-    <card-list>
-      <card-list-item
+    <div class="others-list">
+      <ion-button
           v-for="other in others"
           :key="other.id"
           @click="changeStatus(other)"
       >
         {{ other.label }}
-      </card-list-item>
-    </card-list>
+      </ion-button>
+    </div>
   </page-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { IonButton } from '@ionic/vue'
 import PageLayout from "@/components/page/PageLayout.vue";
-import CardList from "@/components/list/CardList.vue";
-import CardListItem from '@/components/list/CardListItem.vue'
 import { getOthers, Other } from '@/data/others'
 import { updateOthers } from '@/data/others'
 
 export default defineComponent({
   name: 'OthersPage',
   components: {
-    CardListItem,
-    CardList,
+    IonButton,
     PageLayout
   },
   setup (): {
@@ -51,3 +49,19 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.others-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.others-list ion-button {
+  width: 48%;
+}
+</style>

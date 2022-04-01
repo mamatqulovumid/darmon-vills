@@ -25,15 +25,12 @@ export enum COL {
   THIRTEENTH,
   FOURTEENTH,
   FIFTEENTH,
-  SIXTEENTH,
-  SEVENTEENTH,
-  EIGHTEENTH,
-  NINETEENTH,
-  TWENTIETH,
-  TWENTY_FIRST,
-  TWENTY_SECOND,
-  TWENTY_THIRD,
-  TWENTY_FOURTH,
+  SIXTEENTH
+}
+
+export interface Area {
+  id: number
+  name: string
 }
 
 export interface Section {
@@ -46,12 +43,48 @@ export interface House {
   section_id: number
   col: number
   row: number
+  area_id?: number
 }
+
+const areas: Area[] = [
+  {
+    id: 1,
+    name: '450-500'
+  },
+  {
+    id: 2,
+    name: '500-550'
+  },
+  {
+    id: 3,
+    name: '550-600'
+  },
+  {
+    id: 4,
+    name: '600-650'
+  },
+  {
+    id: 5,
+    name: '650-700'
+  },
+  {
+    id: 6,
+    name: '700-750'
+  },
+  {
+    id: 7,
+    name: '750-800'
+  },
+  {
+    id: 8,
+    name: '>1000'
+  }
+]
 
 const sections: Section[] = [
   {
     id: 1,
-    name: 'A'
+    name: 'A',
   },
   {
     id: 2,
@@ -80,6 +113,18 @@ const sections: Section[] = [
   {
     id: 8,
     name: 'H'
+  },
+  {
+    id: 9,
+    name: 'I'
+  },
+  {
+    id: 10,
+    name: 'J'
+  },
+  {
+    id: 11,
+    name: 'K'
   }
 ];
 
@@ -88,524 +133,595 @@ const houses: House[] = [
     id: 1,
     section_id: 1,
     row: ROW.FIRST,
-    col: COL.FIRST
+    col: COL.FIRST,
+    area_id: 8
   },
   {
     id: 2,
     section_id: 1,
     row: ROW.FIRST,
-    col: COL.SECOND
+    col: COL.SECOND,
+    area_id: 8
   },
   {
     id: 3,
     section_id: 1,
     row: ROW.FIRST,
-    col: COL.THIRD
+    col: COL.THIRD,
+    area_id: 8
   },
   {
     id: 4,
     section_id: 1,
     row: ROW.FIRST,
-    col: COL.FOURTH
+    col: COL.FOURTH,
+    area_id: 8
   },
   {
     id: 5,
     section_id: 1,
     row: ROW.FIRST,
-    col: COL.FIFTH
+    col: COL.SIX,
+    area_id: 8
   },
   {
     id: 6,
-    section_id: 1,
+    section_id: 2,
     row: ROW.FIRST,
-    col: COL.SIX
+    col: COL.FIFTH,
+    area_id: 3
   },
   {
     id: 7,
-    section_id: 1,
+    section_id: 2,
     row: ROW.FIRST,
-    col: COL.SEVENTH
+    col: COL.SEVENTH,
+    area_id: 5
   },
   {
     id: 8,
-    section_id: 1,
+    section_id: 2,
     row: ROW.FIRST,
-    col: COL.EIGHTH
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 9,
-    section_id: 1,
-    row: ROW.FIRST,
-    col: COL.NINTH
+    section_id: 2,
+    row: ROW.SECOND,
+    col: COL.FIRST,
+    area_id: 4
   },
   {
     id: 10,
-    section_id: 1,
-    row: ROW.FIRST,
-    col: COL.TENTH
+    section_id: 2,
+    row: ROW.SECOND,
+    col: COL.SECOND,
+    area_id: 3
   },
   {
     id: 11,
-    section_id: 1,
-    row: ROW.FIRST,
-    col: COL.ELEVENTH
+    section_id: 2,
+    row: ROW.SECOND,
+    col: COL.SIX,
+    area_id: 4
   },
   {
     id: 12,
     section_id: 2,
-    row: ROW.FIRST,
-    col: COL.TWELFTH
+    row: ROW.SECOND,
+    col: COL.FIFTH,
+    area_id: 7
   },
   {
     id: 13,
     section_id: 2,
-    row: ROW.FIRST,
-    col: COL.THIRTEENTH
+    row: ROW.SECOND,
+    col: COL.SEVENTH,
+    area_id: 4
   },
   {
     id: 14,
     section_id: 2,
-    row: ROW.FIRST,
-    col: COL.FOURTEENTH
+    row: ROW.SECOND,
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 15,
     section_id: 2,
-    row: ROW.FIRST,
-    col: COL.FIFTEENTH
+    row: ROW.THIRD,
+    col: COL.FIRST,
+    area_id: 4
   },
   {
     id: 16,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.SIXTEENTH
+    section_id: 3,
+    row: ROW.THIRD,
+    col: COL.FOURTH,
+    area_id: 4
   },
   {
     id: 17,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.SEVENTEENTH
+    section_id: 3,
+    row: ROW.THIRD,
+    col: COL.FIFTH,
+    area_id: 4
   },
   {
     id: 18,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.EIGHTEENTH
+    section_id: 3,
+    row: ROW.THIRD,
+    col: COL.SIX,
+    area_id: 3
   },
   {
     id: 19,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.NINETEENTH
+    section_id: 3,
+    row: ROW.THIRD,
+    col: COL.SEVENTH,
+    area_id: 3
   },
   {
     id: 20,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.TWENTIETH
+    section_id: 3,
+    row: ROW.THIRD,
+    col: COL.EIGHTH,
+    area_id: 3
   },
   {
     id: 21,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.TWENTY_FIRST
+    section_id: 3,
+    row: ROW.FOURTH,
+    col: COL.THIRD,
+    area_id: 5
   },
   {
     id: 22,
-    section_id: 2,
-    row: ROW.FIRST,
-    col: COL.TWENTY_SECOND
+    section_id: 3,
+    row: ROW.FOURTH,
+    col: COL.FOURTH,
+    area_id: 5
   },
   {
     id: 23,
     section_id: 3,
-    row: ROW.FIRST,
-    col: COL.TWENTY_THIRD
+    row: ROW.FOURTH,
+    col: COL.FIFTH,
+    area_id: 4
   },
   {
     id: 24,
     section_id: 3,
-    row: ROW.FIRST,
-    col: COL.TWENTY_FOURTH
+    row: ROW.FOURTH,
+    col: COL.SIX,
+    area_id: 4
   },
   {
     id: 25,
     section_id: 3,
-    row: ROW.SECOND,
-    col: COL.FIRST
+    row: ROW.FOURTH,
+    col: COL.SEVENTH,
+    area_id: 4
   },
   {
     id: 26,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.SECOND
+    section_id: 4,
+    row: ROW.FIFTH,
+    col: COL.FOURTH,
+    area_id: 6
   },
   {
     id: 27,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.THIRD
+    section_id: 4,
+    row: ROW.FIFTH,
+    col: COL.FIFTH,
+    area_id: 4
   },
   {
     id: 28,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.FOURTH
+    section_id: 4,
+    row: ROW.FIFTH,
+    col: COL.SIX,
+    area_id: 4
   },
   {
     id: 29,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.FIFTH
+    section_id: 4,
+    row: ROW.FIFTH,
+    col: COL.SEVENTH,
+    area_id: 4
   },
   {
     id: 30,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.SIX
+    section_id: 4,
+    row: ROW.FIFTH,
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 31,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.SEVENTH
+    section_id: 4,
+    row: ROW.SIX,
+    col: COL.FIFTH,
+    area_id: 6
   },
   {
     id: 32,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.EIGHTH
+    section_id: 4,
+    row: ROW.SIX,
+    col: COL.SIX,
+    area_id: 5
   },
   {
     id: 33,
-    section_id: 3,
-    row: ROW.SECOND,
-    col: COL.NINTH
+    section_id: 4,
+    row: ROW.SIX,
+    col: COL.SEVENTH,
+    area_id: 4
   },
   {
     id: 34,
     section_id: 4,
-    row: ROW.SECOND,
-    col: COL.TENTH
+    row: ROW.SIX,
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 35,
     section_id: 4,
-    row: ROW.SECOND,
-    col: COL.ELEVENTH
+    row: ROW.SEVENTH,
+    col: COL.FIRST,
+    area_id: 4
   },
   {
     id: 36,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.TWELFTH
+    section_id: 5,
+    row: ROW.SEVENTH,
+    col: COL.SIX,
+    area_id: 6
   },
   {
     id: 37,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.THIRTEENTH
+    section_id: 5,
+    row: ROW.SEVENTH,
+    col: COL.SEVENTH,
+    area_id: 5
   },
   {
     id: 38,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.FOURTEENTH
+    section_id: 5,
+    row: ROW.SEVENTH,
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 39,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.FIFTEENTH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.FIRST,
+    area_id: 4
   },
   {
     id: 40,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.SIXTEENTH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.SECOND,
+    area_id: 4
   },
   {
     id: 41,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.SEVENTEENTH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.FIFTH,
+    area_id: 6
   },
   {
     id: 42,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.EIGHTEENTH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.SIX,
+    area_id: 2
   },
   {
     id: 43,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.NINETEENTH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.SEVENTH,
+    area_id: 3
   },
   {
     id: 44,
-    section_id: 4,
-    row: ROW.SECOND,
-    col: COL.TWENTIETH
+    section_id: 5,
+    row: ROW.EIGHTH,
+    col: COL.EIGHTH,
+    area_id: 3
   },
   {
     id: 45,
     section_id: 5,
-    row: ROW.SECOND,
-    col: COL.TWENTY_FIRST
+    row: ROW.FIRST,
+    col: COL.NINTH,
+    area_id: 3
   },
   {
     id: 46,
-    section_id: 5,
+    section_id: 6,
     row: ROW.SECOND,
-    col: COL.TWENTY_SECOND
+    col: COL.THIRD,
+    area_id: 5
   },
   {
     id: 47,
-    section_id: 5,
+    section_id: 6,
     row: ROW.SECOND,
-    col: COL.TWENTY_THIRD
+    col: COL.FOURTH,
+    area_id: 6
   },
   {
     id: 48,
-    section_id: 5,
-    row: ROW.SECOND,
-    col: COL.TWENTY_FOURTH
+    section_id: 6,
+    row: ROW.THIRD,
+    col: COL.SECOND,
+    area_id: 7
   },
   {
     id: 49,
-    section_id: 5,
+    section_id: 6,
     row: ROW.THIRD,
-    col: COL.FIRST
+    col: COL.THIRD,
+    area_id: 7
   },
   {
     id: 50,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.SECOND
+    section_id: 7,
+    row: ROW.FOURTH,
+    col: COL.FIRST,
+    area_id: 5
   },
   {
     id: 51,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.THIRD
+    section_id: 7,
+    row: ROW.FOURTH,
+    col: COL.SECOND,
+    area_id: 5
   },
   {
     id: 52,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.FOURTH
+    section_id: 7,
+    row: ROW.FOURTH,
+    col: COL.EIGHTH,
+    area_id: 4
   },
   {
     id: 53,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.FIFTH
+    section_id: 7,
+    row: ROW.FIFTH,
+    col: COL.FIRST,
+    area_id: 4
   },
   {
     id: 54,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.SIX
+    section_id: 7,
+    row: ROW.FIFTH,
+    col: COL.SECOND,
+    area_id: 4
   },
   {
     id: 55,
-    section_id: 5,
-    row: ROW.THIRD,
-    col: COL.SEVENTH
+    section_id: 7,
+    row: ROW.FIFTH,
+    col: COL.THIRD,
+    area_id: 5
   },
   {
     id: 56,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.EIGHTH
+    section_id: 8,
+    row: ROW.SIX,
+    col: COL.FOURTH,
+    area_id: 4
   },
   {
     id: 57,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.NINTH
+    section_id: 8,
+    row: ROW.SIX,
+    col: COL.THIRD,
+    area_id: 4
   },
   {
     id: 58,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.TENTH
+    section_id: 8,
+    row: ROW.SIX,
+    col: COL.SECOND,
+    area_id: 4
   },
   {
     id: 59,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.ELEVENTH
+    section_id: 8,
+    row: ROW.SIX,
+    col: COL.FIRST,
+    area_id: 5
   },
   {
     id: 60,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.TWELFTH
+    section_id: 8,
+    row: ROW.SEVENTH,
+    col: COL.SECOND,
+    area_id: 4
   },
   {
     id: 61,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.THIRTEENTH
+    section_id: 8,
+    row: ROW.SEVENTH,
+    col: COL.THIRD,
+    area_id: 4
   },
   {
     id: 62,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.FOURTEENTH
+    section_id: 8,
+    row: ROW.SEVENTH,
+    col: COL.FOURTH,
+    area_id: 4
   },
   {
     id: 63,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.FIFTEENTH
+    section_id: 8,
+    row: ROW.SEVENTH,
+    col: COL.FIFTH,
+    area_id: 5
   },
   {
     id: 64,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.SIXTEENTH
+    section_id: 9,
+    row: ROW.EIGHTH,
+    col: COL.THIRD,
+    area_id: 4
   },
   {
     id: 65,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.SEVENTEENTH
+    section_id: 9,
+    row: ROW.EIGHTH,
+    col: COL.FOURTH,
+    area_id: 4
   },
   {
     id: 66,
-    section_id: 6,
+    section_id: 9,
     row: ROW.THIRD,
-    col: COL.EIGHTEENTH
+    col: COL.TENTH,
+    area_id: 4
   },
   {
     id: 67,
-    section_id: 7,
+    section_id: 9,
     row: ROW.THIRD,
-    col: COL.NINETEENTH
+    col: COL.TWELFTH,
+    area_id: 5
   },
   {
     id: 68,
-    section_id: 7,
-    row: ROW.THIRD,
-    col: COL.TWENTIETH
+    section_id: 9,
+    row: ROW.FIRST,
+    col: COL.TENTH,
+    area_id: 3
   },
   {
     id: 69,
-    section_id: 7,
-    row: ROW.THIRD,
-    col: COL.TWENTY_FIRST
+    section_id: 9,
+    row: ROW.FIRST,
+    col: COL.ELEVENTH,
+    area_id: 4
   },
   {
     id: 70,
-    section_id: 7,
-    row: ROW.THIRD,
-    col: COL.TWENTY_SECOND
+    section_id: 9,
+    row: ROW.FIRST,
+    col: COL.TWELFTH,
+    area_id: 4
   },
   {
     id: 71,
-    section_id: 7,
-    row: ROW.THIRD,
-    col: COL.TWENTY_THIRD
+    section_id: 9,
+    row: ROW.FIRST,
+    col: COL.THIRTEENTH,
+    area_id: 5
   },
   {
     id: 72,
-    section_id: 7,
-    row: ROW.THIRD,
-    col: COL.TWENTY_FOURTH
+    section_id: 10,
+    row: ROW.FIRST,
+    col: COL.FOURTEENTH,
+    area_id: 3
   },
   {
     id: 73,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.FIRST
+    section_id: 10,
+    row: ROW.FIRST,
+    col: COL.FIFTEENTH,
+    area_id: 4
   },
   {
     id: 74,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.SECOND
+    section_id: 10,
+    row: ROW.FIRST,
+    col: COL.SIXTEENTH,
+    area_id: 4
   },
   {
     id: 75,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.THIRD
+    section_id: 10,
+    row: ROW.SECOND,
+    col: COL.NINTH,
+    area_id: 5
   },
   {
     id: 76,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.FOURTH
+    section_id: 10,
+    row: ROW.SECOND,
+    col: COL.TENTH,
+    area_id: 4
   },
   {
     id: 77,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.FIFTH
+    section_id: 10,
+    row: ROW.SECOND,
+    col: COL.ELEVENTH,
+    area_id: 4
   },
   {
     id: 78,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.SIX
+    section_id: 10,
+    row: ROW.SECOND,
+    col: COL.TWELFTH,
+    area_id: 4
   },
   {
     id: 79,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.SEVENTH
+    section_id: 10,
+    row: ROW.SECOND,
+    col: COL.THIRTEENTH,
+    area_id: 5
   },
   {
     id: 80,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.EIGHTH
+    section_id: 11,
+    row: ROW.SECOND,
+    col: COL.FOURTEENTH,
+    area_id: 1
   },
   {
     id: 81,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.NINTH
+    section_id: 11,
+    row: ROW.SECOND,
+    col: COL.FIFTEENTH,
+    area_id: 3
   },
   {
     id: 82,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.TENTH
+    section_id: 11,
+    row: ROW.SECOND,
+    col: COL.SIXTEENTH,
+    area_id: 4
   },
   {
     id: 83,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.ELEVENTH
-  },
-  {
-    id: 84,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.TWELFTH
-  },
-  {
-    id: 85,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.THIRTEENTH
-  },
-  {
-    id: 86,
-    section_id: 8,
-    row: ROW.FOURTH,
-    col: COL.FOURTEENTH
+    section_id: 11,
+    row: ROW.THIRD,
+    col: COL.NINTH,
+    area_id: 5
   }
 ]
 
 export const getSections = () => sections;
+export const getAreas = () => areas;
+export const getHouses = () => houses;
 
 export const getSection = (id: number): Section | undefined => {
   return sections.find((section => section.id === id))
+}
+
+export const getAreaHouses = (id: number): House[] => {
+  return houses.filter(({ area_id }) => area_id === id)
 }
 
 export const getSectionHouses = (id: number): House[] => {

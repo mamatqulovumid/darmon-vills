@@ -1,17 +1,17 @@
-import {createRouter, createWebHistory} from '@ionic/vue-router';
-import {RouteRecordRaw} from 'vue-router';
-import HomePage from '../views/HomePage.vue'
-import {HOME_PAGE_URL} from "@/utils/routes";
+import { createRouter, createWebHistory } from '@ionic/vue-router';
+import { RouteRecordRaw } from 'vue-router';
+import { HOME_PAGE_URL } from "@/utils/routes";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: HOME_PAGE_URL
+    component: () => import('../views/IndexPage.vue'),
+    strict: true
   },
   {
     path: HOME_PAGE_URL,
-    name: 'Home',
-    component: HomePage
+    component: () => import('../views/HomePage.vue'),
+    strict: true
   },
   {
     path: '/section/:section',
@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/others',
     component: () => import('../views/OthersPage.vue'),
+    strict: true
+  },
+  {
+    path: '/areas',
+    component: () => import('../views/AreasPage.vue'),
     strict: true
   }
 ]

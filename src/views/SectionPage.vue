@@ -13,10 +13,10 @@
 </template>
 
 <script lang="ts">
-import {useRoute, useRouter} from 'vue-router';
-import {getSection, getSectionHouses, House, Section} from '@/data/sections';
-import {defineComponent} from 'vue';
-import {HOME_PAGE_URL} from "@/utils/routes";
+import { useRoute, useRouter } from 'vue-router';
+import { getSection, getSectionHouses, House, Section } from '@/data/sections';
+import { defineComponent } from 'vue';
+import { HOME_PAGE_URL } from "@/utils/routes";
 import HouseListItem from "@/components/house/HouseListItem.vue";
 import PageLayout from "@/components/page/PageLayout.vue";
 import CardList from "@/components/list/CardList.vue";
@@ -33,7 +33,7 @@ export default defineComponent({
     PageLayout,
     HouseListItem
   },
-  setup(): SetupData | never {
+  setup (): SetupData | never {
     const route = useRoute();
     const section = getSection(parseInt(route.params.section as string));
 
@@ -48,9 +48,9 @@ export default defineComponent({
     } as SetupData
   },
   computed: {
-    pageTitle(): string {
+    pageTitle (): string {
       return `Секция: ${this.section.name}`
     }
-  }
+  },
 });
 </script>
