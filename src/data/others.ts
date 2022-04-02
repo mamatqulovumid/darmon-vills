@@ -6,33 +6,28 @@ export type Other = {
   id: number
   value: boolean
   label: string
-  image: string
 }
 
 export const initialOthers = [
   {
     id: 1,
     value: false,
-    label: 'Дорога',
-    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
+    label: 'Дорога'
   },
   {
     id: 2,
     value: false,
-    label: 'Cтолба',
-    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
+    label: 'Cтолба'
   },
   {
     id: 3,
     value: false,
-    label: 'Машина',
-    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
+    label: 'Машина'
   },
   {
     id: 4,
     value: false,
-    label: 'Плафон',
-    image: 'https://www.freepnglogos.com/uploads/lamp-png/lamp-png-mrscats-deviantart-7.png'
+    label: 'Плафон'
   }
 ]
 

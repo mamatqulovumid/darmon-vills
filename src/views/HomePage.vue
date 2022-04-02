@@ -10,7 +10,7 @@
       />
       <div class="section-item">
         <router-link to="others"></router-link>
-        <span>&</span>
+        <span>Other</span>
       </div>
     </card-list>
   </page-layout>
