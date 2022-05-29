@@ -6,6 +6,7 @@
       <ion-button
           v-for="other in others"
           :key="other.id"
+          :color="getStatus(other)"
           @click="changeStatus(other)"
       >
         {{ other.label }}
@@ -18,8 +19,8 @@
 import { defineComponent } from 'vue';
 import { IonButton } from '@ionic/vue'
 import PageLayout from "@/components/page/PageLayout.vue";
-import { getOthers, Other } from '@/data/others'
-import { updateOthers } from '@/data/others'
+import { Other } from '@/data/others'
+import { mapActions, mapState } from 'vuex'
 
 export default defineComponent({
   name: 'OthersPage',
@@ -27,24 +28,26 @@ export default defineComponent({
     IonButton,
     PageLayout
   },
-  setup (): {
-    others: Other[]
-  } {
-    return {
-      others: getOthers()
-    }
-  },
   computed: {
+    ...mapState({
+      others: 'others'
+    }),
     pageTitle (): string {
       return 'Другие'
     }
   },
   methods: {
+    ...mapActions({
+      updateOthers: 'updateOthers'
+    }),
     changeStatus (other: Other) {
-      const foundOther = this.others.find(item => item.id === other.id)!
+      const foundOther = this.others.find((item: Other) => item.id === other.id)!
       foundOther.value = !other.value
 
-      updateOthers(this.others)
+      this.updateOthers(this.others)
+    },
+    getStatus (other: Other): string {
+      return !this.others.find((item: Other) => item.id === other.id).value ? 'primary' : 'danger'
     }
   }
 });

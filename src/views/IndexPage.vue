@@ -14,19 +14,24 @@
           Дома по м<sup>2</sup>
         </ion-button>
       </router-link>
-          <ion-button
-              @click="switchOnAll"
-          >
-              Включить все
-          </ion-button>
-          <ion-button
-              @click="switchOffAll"
-          >
-            Выключить все
-          </ion-button>
+      <ion-button
+          @click="switchOnAll"
+      >
+        Включить все
+      </ion-button>
+      <ion-button
+          @click="switchOffAll"
+      >
+        Выключить все
+      </ion-button>
       <router-link to="/settings">
         <ion-button>
           Настройки
+        </ion-button>
+      </router-link>
+      <router-link to="/others">
+        <ion-button>
+          Другие
         </ion-button>
       </router-link>
     </div>
@@ -37,9 +42,9 @@
 import { defineComponent } from 'vue'
 import PageLayout from '@/components/page/PageLayout.vue'
 import { IonButton } from '@ionic/vue'
-import {setIpAddress} from "@/data/arduino";
-import {getEmptyLights, getFilledLights, updateLights} from "@/data/lights";
-import {initialOthers, updateOthers} from "@/data/others";
+import { getEmptyLights, getFilledLights } from "@/data/lights";
+import { getFilledOthers, initialOthers } from "@/data/others";
+import { mapActions } from 'vuex'
 
 export default defineComponent({
   components: {
@@ -47,25 +52,17 @@ export default defineComponent({
     IonButton
   },
   methods: {
+    ...mapActions({
+      updateLights: 'updateLights',
+      updateOthers: 'updateOthers'
+    }),
     switchOnAll () {
-      updateLights(getFilledLights())
-
-      updateOthers(
-          [...initialOthers].map(other => ({
-            ...other,
-            value: true
-          }))
-      )
+      this.updateLights(getFilledLights())
+      this.updateOthers(getFilledOthers())
     },
     switchOffAll () {
-      updateLights(getEmptyLights())
-
-      updateOthers(
-          [...initialOthers].map(other => ({
-            ...other,
-            value: false
-          }))
-      )
+      this.updateLights(getEmptyLights())
+      this.updateOthers(initialOthers)
     }
   },
 })
@@ -88,7 +85,8 @@ export default defineComponent({
   padding-top: 20px;
 
 }
-ion-button{
+
+ion-button {
   font-size: 20px;
 }
 </style>

@@ -1,5 +1,3 @@
-import { syncOthers } from '@/api/lights'
-
 export const OTHERS_KEY = 'others'
 
 export type Other = {
@@ -17,27 +15,29 @@ export const initialOthers = [
   {
     id: 2,
     value: false,
-    label: 'Cтолба'
+    label: 'CтолбЫ'
   },
   {
     id: 3,
     value: false,
-    label: 'Машина'
+    label: 'Машины'
   },
   {
     id: 4,
     value: false,
-    label: 'Плафон'
+    label: 'Светильники'
   }
 ]
 
-export const updateOthers = (others: Other[]) => {
-  setOthers(others)
-  syncOthers(others)
+export const getEmptyOthers = (): Other[] => {
+  return initialOthers
 }
 
-export const getOthers = (): Other[] => {
-  return initialOthers
+export const getFilledOthers = (): Other[] => {
+  return [...initialOthers].map(other => ({
+    ...other,
+    value: true
+  }))
 }
 
 export const setOthers = (others: Other[]): void => {

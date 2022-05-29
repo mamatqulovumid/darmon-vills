@@ -1,49 +1,78 @@
 <template>
   <card-list-item
-      @click="openModal"
+      :active="lightStatus"
+      @click="updateLightStatus"
   >
-    <span> {{ label }} </span>
-    <house-modal
-        v-if="showModal"
-        :value="showModal"
-        :house="house"
-        @update:value="showModal = $event"
-    />
+    <span>
+      {{ label }}
+    </span>
+    <b v-if="section">
+      Секция: {{ section.name }}
+    </b>
   </card-list-item>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { House, getSectionHouses } from "@/data/sections";
-import HouseModal from "@/components/house/HouseModal.vue";
+import { House, getSection, getSectionHouses } from "@/data/sections";
 import CardListItem from "@/components/list/CardListItem.vue";
+import { mapActions, mapGetters } from 'vuex'
 
 export default defineComponent({
   name: 'HouseListItem',
   components: {
-    CardListItem,
-    HouseModal
+    CardListItem
   },
   props: {
     house: {
       type: Object as PropType<House>,
       required: true
+    },
+    showSection: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    showByOrder: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   data () {
     return {
-      showModal: false
+      houseInfo: null,
+      slideOpts: {
+        initialSlide: 1,
+        speed: 400
+      }
     }
   },
   computed: {
+    ...mapGetters({
+      houseState: 'houseState'
+    }),
+    lightStatus () {
+      return this.houseState(this.house)
+    },
     label () {
-      return this.house.id - this.getLastHousesCount()
+      if (this.showByOrder) {
+        return this.house.id - this.getLastHousesCount()
+      }
+      return this.house.id
+    },
+    section () {
+      if (this.showSection) {
+        return getSection(this.house.section_id)
+      }
+      return null
     }
   },
   methods: {
-    openModal () {
-      this.showModal = true
-    },
+    ...mapActions({
+      turnOnLight: 'turnOnLight',
+      turnOffLight: 'turnOffLight'
+    }),
     getLastHousesCount () {
       let result = 0
       let iter = this.house.section_id
@@ -53,6 +82,18 @@ export default defineComponent({
       }
 
       return result
+    },
+    async updateLightStatus () {
+      const status = !this.lightStatus
+      try {
+        if (status) {
+          this.turnOnLight(this.house)
+        } else {
+          this.turnOffLight(this.house)
+        }
+        // eslint-disable-next-line no-empty
+      } catch (e) {
+      }
     }
   }
 });

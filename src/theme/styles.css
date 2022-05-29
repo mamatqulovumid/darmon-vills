@@ -10,14 +10,14 @@ ul {
     align-items: center;
 
     position: relative;
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
 
     color: #000000;
     font-size: 25px;
     font-weight: 700;
     background-color: #EAE7AF;
-    border-radius: 12px;
+    border-radius: 20px;
 
     margin-bottom: 20px;
 }
@@ -30,4 +30,58 @@ ul {
     bottom: 0;
 
     text-decoration: none;
+}
+
+.house-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 150px;
+    height: 150px;
+
+    position: relative;
+
+    color: #EAE7AF;
+    font-size: 25px;
+    font-weight: 700;
+
+    background-image: url("~/src/assets/img/home.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.house-item b {
+    position: absolute;
+
+    bottom: -35px;
+}
+
+.house-item.active {
+    position: relative;
+}
+
+.house-item.active::after {
+    content: '';
+
+    position: absolute;
+    left: 13px;
+    right: 13px;
+    bottom: -4px;
+
+    height: 4px;
+
+    background-color: #ED6663;
+}
+
+.house-item a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

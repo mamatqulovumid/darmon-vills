@@ -7,11 +7,11 @@
           v-for="house in houses"
           :key="house.id"
           :house="house"
-          show-by-order
+          show-section
       />
       <card-list-item
           :active="isAllActive"
-          @click="switchSectionLights"
+          @click="switchAreaLights"
       >
         Все
       </card-list-item>
@@ -20,64 +20,66 @@
 </template>
 
 <script lang="ts">
-import { useRoute, useRouter } from 'vue-router';
-import { getSection, getSectionHouses, House, Section } from '@/data/sections';
+import {
+  getAreaHouses,
+  getArea,
+  Area,
+  House
+} from '@/data/sections';
 import { defineComponent } from 'vue';
-import { HOME_PAGE_URL } from "@/utils/routes";
-import HouseListItem from "@/components/house/HouseListItem.vue";
 import PageLayout from "@/components/page/PageLayout.vue";
 import CardList from "@/components/list/CardList.vue";
-import { getEmptyLights, Lights } from '@/data/lights'
 import CardListItem from '@/components/list/CardListItem.vue'
-import { mapActions, mapGetters, mapState } from 'vuex'
+import { getEmptyLights, Lights } from '@/data/lights'
+import HouseListItem from '@/components/house/HouseListItem.vue'
+import { useRoute, useRouter } from 'vue-router'
+import { HOME_PAGE_URL } from '@/utils/routes'
+import { mapActions } from 'vuex'
 
 type SetupData = {
-  section: Section
+  area: Area
   houses: House[]
-  isAllActive: boolean
 }
 
 export default defineComponent({
-  name: 'SectionPage',
+  name: 'AreasHousePage',
   components: {
+    HouseListItem,
     CardListItem,
     CardList,
-    PageLayout,
-    HouseListItem
+    PageLayout
   },
   setup (): SetupData | never {
     const route = useRoute();
-    const section = getSection(parseInt(route.params.section as string));
+    const area = getArea(parseInt(route.params.area as string))
 
-    if (!section) {
+    if (!area) {
       const router = useRouter();
       router.push(HOME_PAGE_URL);
     }
 
     return {
-      isAllActive: false,
-      section,
-      houses: getSectionHouses(section!.id)
+      area,
+      houses: getAreaHouses(area!.id)
     } as SetupData
   },
-  computed: {
-    ...mapState({
-      lights: 'lights'
-    }),
-    pageTitle (): string {
-      return `Секция: ${this.section.name}`
+  data () {
+    return {
+      isAllActive: false
+    } as {
+      isAllActive: boolean
     }
   },
-  mounted () {
-    this.isAllActive = this.houses.every(house => {
-      return (house.row in this.lights) && this.lights[house.row].includes(house.col)
-    })
+  computed: {
+    pageTitle (): string {
+      return `Площадь: ${this.area.name}`
+    }
   },
   methods: {
     ...mapActions({
       updateLights: 'updateLights'
     }),
-    switchSectionLights () {
+    switchAreaLights () {
       const lights: Lights = getEmptyLights()
       this.isAllActive = !this.isAllActive
 

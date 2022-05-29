@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <ion-header :translucent="true">
+    <ion-header>
       <ion-toolbar>
         <ion-back-button
             v-if="hasButton"
@@ -14,7 +14,9 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <slot />
+      <div :style="{padding: `50px 0`}">
+        <slot />
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -29,6 +31,7 @@ import {
   IonTitle,
   IonContent
 } from "@ionic/vue";
+import { fetchIpAddress, setIpAddress } from '@/data/arduino'
 
 export default defineComponent({
   name: 'PageLayout',
@@ -51,12 +54,22 @@ export default defineComponent({
       default: true
     }
   },
+  mounted () {
+    this.setInitialAddress()
+  },
   computed: {
     backButtonText (): string {
       const win = window as any;
       const mode = win && win.Ionic && win.Ionic.mode;
       return mode === 'ios' ? 'Back' : '';
     }
+  },
+  methods: {
+    async setInitialAddress () {
+      setIpAddress(
+          (await fetchIpAddress()).data
+      )
+    },
   }
 })
 </script>

@@ -125,6 +125,10 @@ const sections: Section[] = [
   {
     id: 11,
     name: 'K'
+  },
+  {
+    id: 12,
+    name: 'L'
   }
 ];
 
@@ -211,7 +215,7 @@ const houses: House[] = [
     section_id: 2,
     row: ROW.SECOND,
     col: COL.FIFTH,
-    area_id: 7
+    area_id: 6
   },
   {
     id: 13,
@@ -316,7 +320,7 @@ const houses: House[] = [
     section_id: 4,
     row: ROW.FIFTH,
     col: COL.FIFTH,
-    area_id: 4
+    area_id: 5
   },
   {
     id: 28,
@@ -379,7 +383,7 @@ const houses: House[] = [
     section_id: 5,
     row: ROW.SEVENTH,
     col: COL.SIX,
-    area_id: 6
+    area_id: 7
   },
   {
     id: 37,
@@ -442,270 +446,319 @@ const houses: House[] = [
     section_id: 5,
     row: ROW.FIRST,
     col: COL.NINTH,
-    area_id: 3
+    area_id: 2
   },
   {
     id: 46,
     section_id: 6,
+    row: ROW.FOURTH,
+    col: COL.SIXTEENTH,
+    area_id: 4
+  },
+  {
+    id: 47,
+    section_id: 6,
+    row: ROW.FOURTH,
+    col: COL.FIFTEENTH,
+    area_id: 4
+  },
+  {
+    id: 48,
+    section_id: 6,
+    row: ROW.FOURTH,
+    col: COL.FOURTEENTH,
+    area_id: 4
+  },
+  {
+    id: 49,
+    section_id: 7,
     row: ROW.SECOND,
     col: COL.THIRD,
     area_id: 5
   },
   {
-    id: 47,
-    section_id: 6,
+    id: 50,
+    section_id: 7,
     row: ROW.SECOND,
     col: COL.FOURTH,
     area_id: 6
   },
   {
-    id: 48,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.SECOND,
-    area_id: 7
-  },
-  {
-    id: 49,
-    section_id: 6,
-    row: ROW.THIRD,
-    col: COL.THIRD,
-    area_id: 7
-  },
-  {
-    id: 50,
-    section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.FIRST,
-    area_id: 5
-  },
-  {
     id: 51,
     section_id: 7,
     row: ROW.FOURTH,
-    col: COL.SECOND,
-    area_id: 5
+    col: COL.THIRTEENTH,
+    area_id: 6
   },
   {
     id: 52,
     section_id: 7,
-    row: ROW.FOURTH,
-    col: COL.EIGHTH,
-    area_id: 4
+    row: ROW.THIRD,
+    col: COL.SECOND,
+    area_id: 7
   },
   {
     id: 53,
     section_id: 7,
-    row: ROW.FIFTH,
-    col: COL.FIRST,
-    area_id: 4
+    row: ROW.THIRD,
+    col: COL.THIRD,
+    area_id: 7
   },
   {
     id: 54,
     section_id: 7,
-    row: ROW.FIFTH,
-    col: COL.SECOND,
-    area_id: 4
+    row: ROW.FOURTH,
+    col: COL.TWELFTH,
+    area_id: 7
   },
   {
     id: 55,
-    section_id: 7,
-    row: ROW.FIFTH,
-    col: COL.THIRD,
+    section_id: 8,
+    row: ROW.FOURTH,
+    col: COL.FIRST,
     area_id: 5
   },
   {
     id: 56,
     section_id: 8,
-    row: ROW.SIX,
-    col: COL.FOURTH,
-    area_id: 4
+    row: ROW.FOURTH,
+    col: COL.SECOND,
+    area_id: 5
   },
   {
     id: 57,
     section_id: 8,
-    row: ROW.SIX,
-    col: COL.THIRD,
+    row: ROW.FOURTH,
+    col: COL.EIGHTH,
     area_id: 4
   },
   {
     id: 58,
     section_id: 8,
-    row: ROW.SIX,
-    col: COL.SECOND,
-    area_id: 4
+    row: ROW.FOURTH,
+    col: COL.ELEVENTH,
+    area_id: 8
   },
   {
     id: 59,
     section_id: 8,
-    row: ROW.SIX,
+    row: ROW.FIFTH,
     col: COL.FIRST,
-    area_id: 5
+    area_id: 4
   },
   {
     id: 60,
     section_id: 8,
-    row: ROW.SEVENTH,
+    row: ROW.FIFTH,
     col: COL.SECOND,
     area_id: 4
   },
   {
     id: 61,
     section_id: 8,
-    row: ROW.SEVENTH,
+    row: ROW.FIFTH,
     col: COL.THIRD,
-    area_id: 4
+    area_id: 5
   },
   {
     id: 62,
-    section_id: 8,
-    row: ROW.SEVENTH,
+    section_id: 9,
+    row: ROW.SIX,
     col: COL.FOURTH,
     area_id: 4
   },
   {
     id: 63,
-    section_id: 8,
-    row: ROW.SEVENTH,
-    col: COL.FIFTH,
-    area_id: 5
+    section_id: 9,
+    row: ROW.SIX,
+    col: COL.THIRD,
+    area_id: 4
   },
   {
     id: 64,
     section_id: 9,
-    row: ROW.EIGHTH,
-    col: COL.THIRD,
+    row: ROW.SIX,
+    col: COL.SECOND,
     area_id: 4
   },
   {
     id: 65,
     section_id: 9,
-    row: ROW.EIGHTH,
-    col: COL.FOURTH,
-    area_id: 4
+    row: ROW.SIX,
+    col: COL.FIRST,
+    area_id: 5
   },
   {
     id: 66,
     section_id: 9,
-    row: ROW.THIRD,
-    col: COL.TENTH,
+    row: ROW.SEVENTH,
+    col: COL.SECOND,
     area_id: 4
   },
   {
     id: 67,
     section_id: 9,
+    row: ROW.SEVENTH,
+    col: COL.THIRD,
+    area_id: 4
+  },
+  {
+    id: 68,
+    section_id: 9,
+    row: ROW.SEVENTH,
+    col: COL.FOURTH,
+    area_id: 4
+  },
+  {
+    id: 69,
+    section_id: 9,
+    row: ROW.SEVENTH,
+    col: COL.FIFTH,
+    area_id: 5
+  },
+  {
+    id: 70,
+    section_id: 10,
+    row: ROW.EIGHTH,
+    col: COL.THIRD,
+    area_id: 4
+  },
+  {
+    id: 71,
+    section_id: 10,
+    row: ROW.EIGHTH,
+    col: COL.FOURTH,
+    area_id: 4
+  },
+  {
+    id: 72,
+    section_id: 10,
+    row: ROW.THIRD,
+    col: COL.TENTH,
+    area_id: 4
+  },
+  {
+    id: 73,
+    section_id: 10,
     row: ROW.THIRD,
     col: COL.TWELFTH,
     area_id: 5
   },
   {
-    id: 68,
-    section_id: 9,
+    id: 74,
+    section_id: 10,
     row: ROW.FIRST,
     col: COL.TENTH,
     area_id: 3
   },
   {
-    id: 69,
-    section_id: 9,
+    id: 75,
+    section_id: 10,
     row: ROW.FIRST,
     col: COL.ELEVENTH,
     area_id: 4
   },
   {
-    id: 70,
-    section_id: 9,
-    row: ROW.FIRST,
-    col: COL.TWELFTH,
-    area_id: 4
-  },
-  {
-    id: 71,
-    section_id: 9,
-    row: ROW.FIRST,
-    col: COL.THIRTEENTH,
-    area_id: 5
-  },
-  {
-    id: 72,
-    section_id: 10,
-    row: ROW.FIRST,
-    col: COL.FOURTEENTH,
-    area_id: 3
-  },
-  {
-    id: 73,
-    section_id: 10,
-    row: ROW.FIRST,
-    col: COL.FIFTEENTH,
-    area_id: 4
-  },
-  {
-    id: 74,
-    section_id: 10,
-    row: ROW.FIRST,
-    col: COL.SIXTEENTH,
-    area_id: 4
-  },
-  {
-    id: 75,
-    section_id: 10,
-    row: ROW.SECOND,
-    col: COL.NINTH,
-    area_id: 5
-  },
-  {
     id: 76,
     section_id: 10,
-    row: ROW.SECOND,
-    col: COL.TENTH,
+    row: ROW.FIRST,
+    col: COL.TWELFTH,
     area_id: 4
   },
   {
     id: 77,
     section_id: 10,
-    row: ROW.SECOND,
-    col: COL.ELEVENTH,
-    area_id: 4
-  },
-  {
-    id: 78,
-    section_id: 10,
-    row: ROW.SECOND,
-    col: COL.TWELFTH,
-    area_id: 4
-  },
-  {
-    id: 79,
-    section_id: 10,
-    row: ROW.SECOND,
+    row: ROW.FIRST,
     col: COL.THIRTEENTH,
     area_id: 5
   },
   {
+    id: 78,
+    section_id: 11,
+    row: ROW.THIRD,
+    col: COL.FOURTEENTH,
+    area_id: 3
+  },
+  {
+    id: 79,
+    section_id: 11,
+    row: ROW.FIRST,
+    col: COL.FIFTEENTH,
+    area_id: 4
+  },
+  {
     id: 80,
     section_id: 11,
-    row: ROW.SECOND,
-    col: COL.FOURTEENTH,
-    area_id: 1
+    row: ROW.FIRST,
+    col: COL.SIXTEENTH,
+    area_id: 4
   },
   {
     id: 81,
     section_id: 11,
     row: ROW.SECOND,
-    col: COL.FIFTEENTH,
-    area_id: 3
+    col: COL.NINTH,
+    area_id: 5
   },
   {
     id: 82,
     section_id: 11,
     row: ROW.SECOND,
-    col: COL.SIXTEENTH,
+    col: COL.TENTH,
     area_id: 4
   },
   {
     id: 83,
     section_id: 11,
+    row: ROW.SECOND,
+    col: COL.ELEVENTH,
+    area_id: 4
+  },
+  {
+    id: 84,
+    section_id: 11,
+    row: ROW.SECOND,
+    col: COL.TWELFTH,
+    area_id: 4
+  },
+  {
+    id: 85,
+    section_id: 11,
+    row: ROW.SECOND,
+    col: COL.THIRTEENTH,
+    area_id: 5
+  },
+  {
+    id: 86,
+    section_id: 12,
+    row: ROW.THIRD,
+    col: COL.THIRTEENTH,
+    area_id: 1
+  },
+  {
+    id: 87,
+    section_id: 12,
+    row: ROW.THIRD,
+    col: COL.ELEVENTH,
+    area_id: 3
+  },
+  {
+    id: 88,
+    section_id: 12,
+    row: ROW.SECOND,
+    col: COL.FIFTEENTH,
+    area_id: 4
+  },
+  {
+    id: 89,
+    section_id: 12,
+    row: ROW.SECOND,
+    col: COL.SIXTEENTH,
+    area_id: 4
+  },
+  {
+    id: 90,
+    section_id: 12,
     row: ROW.THIRD,
     col: COL.NINTH,
     area_id: 5
@@ -717,7 +770,11 @@ export const getAreas = () => areas;
 export const getHouses = () => houses;
 
 export const getSection = (id: number): Section | undefined => {
-  return sections.find((section => section.id === id))
+  return sections.find(section => section.id === id)
+}
+
+export const getArea = (id: number): Area | undefined => {
+  return areas.find(area => area.id === id)
 }
 
 export const getAreaHouses = (id: number): House[] => {
@@ -730,4 +787,20 @@ export const getSectionHouses = (id: number): House[] => {
 
 export const getHouse = (id: number): House | undefined => {
   return houses.find((house => house.id === id))
+}
+
+export const getCols = (): number[] => {
+  const cols: number[] = []
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  Object.values(COL).forEach((col: string) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (!isNaN(parseInt(col))) {
+      cols.push(parseInt(col))
+    }
+  })
+
+  return cols
 }

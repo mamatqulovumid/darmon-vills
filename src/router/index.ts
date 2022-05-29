@@ -4,12 +4,12 @@ import { HOME_PAGE_URL } from "@/utils/routes";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: HOME_PAGE_URL,
     component: () => import('../views/IndexPage.vue'),
     strict: true
   },
   {
-    path: HOME_PAGE_URL,
+    path: '/home',
     component: () => import('../views/HomePage.vue'),
     strict: true
   },
@@ -31,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/areas',
     component: () => import('../views/AreasPage.vue'),
+    strict: true
+  },
+  {
+    path: '/areas/:area',
+    component: () => import('../views/AreasHousePage.vue'),
     strict: true
   }
 ]

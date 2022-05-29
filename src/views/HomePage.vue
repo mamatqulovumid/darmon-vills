@@ -1,6 +1,6 @@
 <template>
   <page-layout
-      page-title="Durmon Villalari"
+      page-title="Секции"
   >
     <card-list>
       <section-list-item
@@ -8,10 +8,6 @@
           :key="section.id"
           :section="section"
       />
-      <div class="section-item">
-        <router-link to="others"></router-link>
-        <span>Other</span>
-      </div>
     </card-list>
   </page-layout>
 </template>
